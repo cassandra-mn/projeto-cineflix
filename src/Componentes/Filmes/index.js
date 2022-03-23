@@ -4,7 +4,7 @@ import image2 from "./../../assets/image 7.png";
 
 export default function Filmes() {
     return (
-        <>
+        <div className="Filmes">
             <nav>
                 <p>CINEFLEX</p>
             </nav>
@@ -37,6 +37,6 @@ export default function Filmes() {
                     <img src={image2} />
                 </div>
             </main>
-        </>
+        </div>
     )
 }

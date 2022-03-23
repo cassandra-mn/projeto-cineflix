@@ -1,27 +1,27 @@
-section {
+.Filmes section {
     height: 110px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-section p {
+.Filmes section p {
     font-size: 24px;
     color: #293845;
 }
 
-main {
+.Filmes main {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-main img {
+.Filmes main img {
     width: 129px;
     height: 193px;
 }
 
-main .borda {
+.Filmes main .borda {
     width: 145px;
     height: 209px;
     margin-bottom: 27px;

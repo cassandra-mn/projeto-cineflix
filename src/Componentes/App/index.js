@@ -1,11 +1,11 @@
 import Filmes from "./../Filmes";
-import Teste from "./../Teste";
+import Horario from "./../Horario";
 
 export default function App() {
     return (
         <>
-            <Filmes />
-            {/* <Teste /> */}
+            {/* <Filmes /> */}
+            <Horario />
         </>
     )
 }
