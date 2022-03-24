@@ -12,7 +12,7 @@ export default function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Filmes />} />
-                <Route path="/filme/37" element={<Horario />} />
+                <Route path="/filme/:idFilme" element={<Horario />} />
                 <Route path="/sessao/240" element={<Sessao />} />
                 <Route path="/sucesso" element={<Confirmacao />} />
             </Routes>

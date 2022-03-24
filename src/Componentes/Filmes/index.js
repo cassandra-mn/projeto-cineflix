@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
@@ -13,9 +12,9 @@ export default function Filmes() {
 
         requisicao.then(resposta => {
             setFilmes(resposta.data);
-            console.log(resposta.data);
         });
     }, []);
+    console.log(filmes);
 
     return (
         <div className="Filmes">
@@ -26,8 +25,8 @@ export default function Filmes() {
                 {filmes.map(filme => {
                     const {id, posterURL} = filme;
                     return (
-                        <Link to="/filme/37">
-                            <div className="borda">
+                        <Link to="/filme/1">
+                            <div key={id} className="borda">
                                 <img src={posterURL} />
                             </div>
                         </Link>
