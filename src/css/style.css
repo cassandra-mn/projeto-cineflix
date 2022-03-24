@@ -60,3 +60,7 @@ footer p {
     line-height: 30px;
     color: #293845;
 }
+
+button:hover {
+    cursor: pointer;
+}
