@@ -1,0 +1,41 @@
+.Confirmacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Confirmacao section p {
+    width: 150px;
+    line-height: 28px;
+    text-align: center;
+    font-weight: bold;
+    color: #247A6B;
+}
+
+.Confirmacao .informacoes {
+    width: 327px;
+    margin-top: 25px;
+}
+
+.Confirmacao .informacoes strong {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.04em;
+    font-weight: bold;
+}
+
+.Confirmacao .informacoes p {
+    font-size: 22px;
+    line-height: 28px;
+}
+
+.Confirmacao button {
+    width: 225px;
+    height: 42px;
+    font-size: 18px;
+    margin: 62px 0;
+    border-radius: 3px;
+    border: none;
+    color: #FFFFFF;
+    background: #E8833A;
+}
