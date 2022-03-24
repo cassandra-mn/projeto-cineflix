@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function Confirmacao() {
@@ -21,7 +22,9 @@ export default function Confirmacao() {
                 <p>Nome: João da Silva Sauro</p>
                 <p>CPF: 123.456.789-10</p>
             </div>
-            <button>Voltar para home</button>
+            <Link to="/">
+                <button>Voltar para home</button>
+            </Link>
         </div>
     );
 }

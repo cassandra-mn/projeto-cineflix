@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import image from "./../../assets/image 7.png";
 import "./style.css";
 
@@ -93,7 +94,9 @@ export default function Sessao() {
                     <input type="text" placeholder="Digite seu CPF..." />
                 </div>
             </aside>
-            <button>Reservar assento(s)</button>
+            <Link to="/sucesso">
+                <button>Reservar assento(s)</button>
+            </Link>
             <footer>
                 <div className="borda">
                     <img src={image} />
