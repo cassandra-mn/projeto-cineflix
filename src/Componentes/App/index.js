@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./../Header";
 import Filmes from "./../Filmes";
 import Horario from "./../Horario";
@@ -7,11 +8,15 @@ import Confirmacao from "./../Confirmacao";
 export default function App() {
     return (
         <>
+        <BrowserRouter>
             <Header />
-            <Filmes />
-            {/* <Horario /> */}
-            {/* <Sessao /> */}
-            {/* <Confirmacao /> */}
+            <Routes>
+                <Route path="/" element={<Filmes />} />
+                <Route path="/filme/37" element={<Horario />} />
+                <Route path="/sessao/240" element={<Sessao />} />
+                <Route path="/sucesso" element={<Confirmacao />} />
+            </Routes>
+        </BrowserRouter>
         </>
     )
 }
