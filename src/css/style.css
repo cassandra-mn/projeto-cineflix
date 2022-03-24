@@ -6,6 +6,8 @@
 
 body {
     width: 374px;
+    display: flex;
+    justify-content: center;
 }
 
 p {
@@ -30,4 +32,51 @@ nav p {
     justify-content: center;
     text-align: center;
     color: #E8833A;
+}
+
+section {
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section p {
+    font-size: 24px;
+    color: #293845;
+}
+
+footer {
+    position: fixed;
+    width: 375px;
+    height: 117px;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    background: #DFE6ED;
+    border-top: 1px solid #9EADBA;
+}
+        
+footer .borda {
+    width: 64px;
+    height: 89px;
+    border-radius: 2px;
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+}
+
+footer img {
+    width: 48px;
+    height: 72px;
+}
+
+footer p {
+    font-size: 26px;
+    line-height: 30px;
+    color: #293845;
 }

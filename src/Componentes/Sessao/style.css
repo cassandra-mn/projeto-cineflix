@@ -1,0 +1,94 @@
+.Sessao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 117px;
+}
+
+.Sessao .assentos {
+    width: 327px;
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Sessao .assentos .assento {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #808F9D;
+    background-color: #C3CFD9;
+}
+
+.Sessao .legenda {
+    height: 50px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Sessao .legenda p {
+    margin-top: 5px;
+}
+
+.Sessao .legenda .selecionado {
+    background-color: #8DD7CF;
+    border: solid 1px #1AAE9E;
+}
+
+.Sessao .legenda .indisponivel {
+    background-color: #FBE192;
+    border: solid 1px #F7C52B;
+}
+
+.Sessao .assentos .legenda .assento {
+    width: 25px;
+    height: 25px;
+}
+
+.Sessao aside {
+    width: 327px;
+    margin-top: 60px;
+}
+
+.Sessao .informacoes {
+    margin-bottom: 10px;
+}
+
+.Sessao .informacoes label {
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #293845;
+}
+
+.Sessao .informacoes input {
+    width: 327px;
+    height: 51px;
+    font-size: 18px;
+    margin-top: 2px;
+    padding-left: 18px;
+    border-radius: 3px;
+    border: 1px solid #D5D5D5;
+}
+
+.Sessao input::placeholder {
+    font-style: italic;
+    color: #AFAFAF;
+}
+
+.Sessao button {
+    width: 225px;
+    height: 42px;
+    font-size: 18px;
+    border-radius: 3px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    border: none;
+    color: #FFFFFF;
+    background: #E8833A;
+}
