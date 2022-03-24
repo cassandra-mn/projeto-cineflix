@@ -5,9 +5,6 @@ import image2 from "./../../assets/image 7.png";
 export default function Filmes() {
     return (
         <div className="Filmes">
-            <nav>
-                <p>CINEFLEX</p>
-            </nav>
             <section>
                 <p>Selecione o filme</p>
             </section>

@@ -4,9 +4,6 @@ import "./style.css";
 export default function Sessao() {
     return (
         <div className="Sessao">
-            <nav>
-                <p>CINEFLEX</p>
-            </nav>
             <section>
                 <p>Selecione o(s) assento(s)</p>
             </section>

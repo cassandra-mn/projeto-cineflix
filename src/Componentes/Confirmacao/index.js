@@ -3,9 +3,6 @@ import "./style.css";
 export default function Confirmacao() {
     return (
         <div className="Confirmacao">
-            <nav>
-                <p>CINEFLEX</p>
-            </nav>
             <section>
                 <p>Pedido feito com sucesso!</p>
             </section>

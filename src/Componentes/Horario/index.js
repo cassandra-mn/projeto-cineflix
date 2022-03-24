@@ -4,9 +4,6 @@ import "./style.css";
 export default function Horario() {
     return (
         <div className="Horario">
-            <nav>
-                <p>CINEFLEX</p>
-            </nav>
             <section>
                 <p>Selecione o horário</p>
             </section>

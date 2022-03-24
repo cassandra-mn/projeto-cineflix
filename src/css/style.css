@@ -14,26 +14,6 @@ p {
     font-family: 'Roboto', sans-serif;
 }
 
-nav {
-    position: sticky;
-    width: 375px;
-    height: 67px;
-    left: 0px;
-    top: 0px;
-    background: #C3CFD9;
-}
-
-nav p {
-    width: 375px;
-    height: 67px;
-    font-size: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #E8833A;
-}
-
 section {
     height: 110px;
     display: flex;
