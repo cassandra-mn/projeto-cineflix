@@ -7,14 +7,21 @@
 
 .Sessao .assentos {
     width: 327px;
-    height: 35px;
+    height: 185px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.Sessao .assentos.legendas {
+    margin-top: 15px;
+    height: 55px;
 }
 
 .Sessao .assentos .assento {
     width: 26px;
     height: 26px;
+    margin: 3px;
     font-size: 12px;
     border-radius: 12px;
     display: flex;
@@ -36,24 +43,24 @@
     margin-top: 5px;
 }
 
-.Sessao .legenda .selecionado {
+.Sessao .assento.selecionado {
     background-color: #8DD7CF;
     border: solid 1px #1AAE9E;
 }
 
-.Sessao .legenda .indisponivel {
+.Sessao .assento.indisponivel {
     background-color: #FBE192;
     border: solid 1px #F7C52B;
 }
 
-.Sessao .assentos .legenda .assento {
+.Sessao .legenda .assento {
     width: 25px;
     height: 25px;
 }
 
 .Sessao aside {
     width: 327px;
-    margin-top: 60px;
+    margin-top: 50px;
 }
 
 .Sessao .informacoes {

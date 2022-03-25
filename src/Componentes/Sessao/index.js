@@ -1,111 +1,82 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import image from "./../../assets/image 7.png";
+import axios from 'axios';
 import "./style.css";
 
 export default function Sessao() {
-    return (
-        <div className="Sessao">
-            <section>
-                <p>Selecione o(s) assento(s)</p>
-            </section>
-            <main>
-                <div className="assentos">
-                    <div className="assento">01</div>
-                    <div className="assento">02</div>
-                    <div className="assento">03</div>
-                    <div className="assento">04</div>
-                    <div className="assento">05</div>
-                    <div className="assento">06</div>
-                    <div className="assento">07</div>
-                    <div className="assento">08</div>
-                    <div className="assento">09</div>
-                    <div className="assento">10</div>
-                </div>
-                <div className="assentos">
-                    <div className="assento">01</div>
-                    <div className="assento">02</div>
-                    <div className="assento">03</div>
-                    <div className="assento">04</div>
-                    <div className="assento">05</div>
-                    <div className="assento">06</div>
-                    <div className="assento">07</div>
-                    <div className="assento">08</div>
-                    <div className="assento">09</div>
-                    <div className="assento">10</div>
-                </div>
-                <div className="assentos">
-                    <div className="assento">01</div>
-                    <div className="assento">02</div>
-                    <div className="assento">03</div>
-                    <div className="assento">04</div>
-                    <div className="assento">05</div>
-                    <div className="assento">06</div>
-                    <div className="assento">07</div>
-                    <div className="assento">08</div>
-                    <div className="assento">09</div>
-                    <div className="assento">10</div>
-                </div>
-                <div className="assentos">
-                    <div className="assento">01</div>
-                    <div className="assento">02</div>
-                    <div className="assento">03</div>
-                    <div className="assento">04</div>
-                    <div className="assento">05</div>
-                    <div className="assento">06</div>
-                    <div className="assento">07</div>
-                    <div className="assento">08</div>
-                    <div className="assento">09</div>
-                    <div className="assento">10</div>
-                </div>
-                <div className="assentos">
-                    <div className="assento">01</div>
-                    <div className="assento">02</div>
-                    <div className="assento">03</div>
-                    <div className="assento">04</div>
-                    <div className="assento">05</div>
-                    <div className="assento">06</div>
-                    <div className="assento">07</div>
-                    <div className="assento">08</div>
-                    <div className="assento">09</div>
-                    <div className="assento">10</div>
-                </div>
-                <div className="assentos">
-                    <div className="legenda">
-                        <div className="assento selecionado"></div>
-                        <p>Selecionado</p>
+    const { idSessao } = useParams();
+    const [sessoes, setSessoes] = useState([]);
+
+    useEffect(() => {
+        const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
+
+        requisicao.then(resposta => setSessoes(resposta.data))
+        .catch(erro => console.log(erro.response));
+    }, []);
+
+    if (sessoes.length === undefined) {
+        console.log(sessoes);
+        const {seats, movie, name, day} = sessoes;
+        const {title, posterURL} = movie;
+        const {weekday} = day;
+
+        return (
+            <div className="Sessao">
+                <section>
+                    <p>Selecione o(s) assento(s)</p>
+                </section>
+                <main>
+                    <div className="assentos">
+                    {seats.map(sessao => {
+                        const {id, name, isAvailable} = sessao;
+                        const css = isAvailable ? "assento" : "assento indisponivel";
+                        return (
+                            <div key={id} className={css}>{name}</div>
+                        );     
+                    })}
                     </div>
-                    <div className="legenda">
-                        <div className="assento disponivel"></div>
-                        <p>Disponível</p>
+                    <div className="assentos legendas">
+                        <div className="legenda">
+                            <div className="assento selecionado"></div>
+                            <p>Selecionado</p>
+                        </div>
+                        <div className="legenda">
+                            <div className="assento disponivel"></div>
+                            <p>Disponível</p>
+                        </div>
+                        <div className="legenda">
+                            <div className="assento indisponivel"></div>
+                            <p>Indisponível</p>
+                        </div>
                     </div>
-                    <div className="legenda">
-                        <div className="assento indisponivel"></div>
-                        <p>Indisponível</p>
+                </main> 
+                <aside>
+                    <div className="informacoes">
+                        <label>Nome do comprador:</label>
+                        <input type="text" placeholder="Digite seu nome..." />
                     </div>
-                </div>
-            </main>
-            <aside>
-                <div className="informacoes">
-                    <label>Nome do comprador:</label>
-                    <input type="text" placeholder="Digite seu nome..." />
-                </div>
-                <div className="informacoes">
-                    <label>CPF do comprador:</label>
-                    <input type="text" placeholder="Digite seu CPF..." />
-                </div>
-            </aside>
-            <Link to="/sucesso">
-                <button>Reservar assento(s)</button>
-            </Link>
-            <footer>
-                <div className="borda">
-                    <img src={image} />
-                </div>
-                <div>
-                    <p>Enola Holmes</p>
-                    <p>Quinta-feira - 15:00</p>
-                </div>
-            </footer>
-        </div>
-    );
+                    <div className="informacoes">
+                        <label>CPF do comprador:</label>
+                        <input type="text" placeholder="Digite seu CPF..." />
+                    </div>
+                </aside>
+                <Link to="/sucesso">
+                    <button>Reservar assento(s)</button>
+                </Link>
+                <footer>
+                    <div className="borda">
+                        <img src={posterURL} />
+                    </div>
+                    <div>
+                        <p>{title}</p>
+                        <p>{weekday} - {name}</p>
+                    </div>
+                </footer>
+            </div>
+        )
+    }
+    else {
+        return <></>
+    }
 }

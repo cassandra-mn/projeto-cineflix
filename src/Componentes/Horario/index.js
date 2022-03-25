@@ -35,7 +35,7 @@ export default function Horario() {
                                     {showtimes.map((time, id) => {
                                         const { name } = time;
                                         return (
-                                            <Link key={id} to="/sessao/240">
+                                            <Link key={id} to="/sessao/1">
                                                 <button>{name}</button>
                                             </Link>
                                         );
