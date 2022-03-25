@@ -6,8 +6,27 @@ import "./style.css";
 
 export default function Sessao() {
     const [sessoes, setSessoes] = useState([]);
-    const [selecionar, setSelecionar] = useState({ selecionados: [], css: "assento" });
+    const [selecionar, setSelecionar] = useState([]);
+    const [nome, setNome] = useState([]);
+    const [cpf, setCpf] = useState([]);
     const { idSessao } = useParams();
+    const ids = [...new Set(selecionar)];
+
+    function dados(e) {
+        e.preventDefault();
+
+        const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {
+            ids: ids,
+            name: nome,
+            cpf: cpf
+        });
+    }
+
+    function funcao() {
+        console.log(ids);
+        console.log(nome);
+        console.log(cpf);
+    }
 
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
@@ -18,16 +37,9 @@ export default function Sessao() {
 
     function select(sessao) {
         const { name, isAvailable } = sessao;
-        const { selecionados } = selecionar;
 
-        isAvailable ? setSelecionar({ ...selecionar, selecionados: [...selecionados, name], css: "assento selecionado" }) : alert("Esse assento não está disponível");
+        isAvailable ? setSelecionar([...selecionar, name]) : alert("Esse assento não está disponível");
     }
-
-    console.log(selecionar.selecionados);
-
-    // useEffect(() => {
-    //     const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many")
-    // }, []);
 
     if (sessoes.length === undefined) {
         const { seats, movie, name, day } = sessoes;
@@ -43,7 +55,7 @@ export default function Sessao() {
                     <div className="assentos">
                         {seats.map(sessao => {
                             const { id, name, isAvailable } = sessao;
-                            let  css = isAvailable ? "assento" : "assento indisponivel";
+                            let css = isAvailable ? "assento" : "assento indisponivel";
 
                             return (
                                 <div key={id} className={css} onClick={() => select(sessao)}>{name}</div>
@@ -66,17 +78,19 @@ export default function Sessao() {
                     </div>
                 </main>
                 <aside>
-                    <div className="informacoes">
-                        <label>Nome do comprador:</label>
-                        <input type="text" placeholder="Digite seu nome..." />
-                    </div>
-                    <div className="informacoes">
-                        <label>CPF do comprador:</label>
-                        <input type="text" placeholder="Digite seu CPF..." />
-                    </div>
+                    <form onSubmit={dados}>
+                        <div className="informacoes">
+                            <label>Nome do comprador:</label>
+                            <input type="text" required placeholder="Digite seu nome..." value={nome} onChange={(event) => setNome(event.target.value)} />
+                        </div>
+                        <div className="informacoes">
+                            <label>CPF do comprador:</label>
+                            <input type="number" required placeholder="Digite seu CPF..." value={cpf} onChange={(event) => setCpf(event.target.value)} />
+                        </div>
+                    </form>
                 </aside>
                 <Link to="/sucesso">
-                    <button>Reservar assento(s)</button>
+                    <button type="submit" onClick={funcao}>Reservar assento(s)</button>
                 </Link>
                 <footer>
                     <div className="borda">
