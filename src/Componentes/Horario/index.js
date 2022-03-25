@@ -26,17 +26,17 @@ export default function Horario() {
                     <p>Selecione o horário</p>
                 </section>
                 <main>
-                    {days.map((dia, id) => {
+                    {days.map(dia => {
                         const { weekday, date, showtimes } = dia;
                         return (
-                            <div key={id} className="dia-hora">
+                            <div key={date} className="dia-hora">
                                 <p>{weekday} - {date}</p>
                                 <div className="horarios">
                                     {showtimes.map(time => {
-                                        const { name } = time;
+                                        const { name, id } = time;
                                         return (
-                                            <Link to={`/sessao/${idFilme}`}>
-                                                <button>{name}</button>
+                                            <Link to={`/sessao/${id}`}>
+                                                <button key={id}>{name}</button>
                                             </Link>
                                         );
                                     })}
