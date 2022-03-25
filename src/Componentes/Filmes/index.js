@@ -25,7 +25,7 @@ export default function Filmes() {
                 {filmes.map(filme => {
                     const {id, posterURL} = filme;
                     return (
-                        <Link to="/filme/1">
+                        <Link to={`/filme/${id}`}>
                             <div key={id} className="borda">
                                 <img src={posterURL} />
                             </div>

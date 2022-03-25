@@ -32,10 +32,10 @@ export default function Horario() {
                             <div key={id} className="dia-hora">
                                 <p>{weekday} - {date}</p>
                                 <div className="horarios">
-                                    {showtimes.map((time, id) => {
+                                    {showtimes.map(time => {
                                         const { name } = time;
                                         return (
-                                            <Link key={id} to="/sessao/1">
+                                            <Link to={`/sessao/${idFilme}`}>
                                                 <button>{name}</button>
                                             </Link>
                                         );

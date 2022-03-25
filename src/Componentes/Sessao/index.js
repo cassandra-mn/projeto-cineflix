@@ -11,21 +11,16 @@ export default function Sessao() {
     const [cpf, setCpf] = useState([]);
     const { idSessao } = useParams();
     const ids = [...new Set(selecionar)];
+    const dadosDoPedido = {
+        ids: ids,
+        name: nome,
+        cpf: cpf
+    }
 
     function dados(e) {
         e.preventDefault();
 
-        const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {
-            ids: ids,
-            name: nome,
-            cpf: cpf
-        });
-    }
-
-    function funcao() {
-        console.log(ids);
-        console.log(nome);
-        console.log(cpf);
+        const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", dadosDoPedido);
     }
 
     useEffect(() => {
@@ -89,8 +84,8 @@ export default function Sessao() {
                         </div>
                     </form>
                 </aside>
-                <Link to="/sucesso">
-                    <button type="submit" onClick={funcao}>Reservar assento(s)</button>
+                <Link to="/sucesso" >
+                    <button type="submit">Reservar assento(s)</button>
                 </Link>
                 <footer>
                     <div className="borda">

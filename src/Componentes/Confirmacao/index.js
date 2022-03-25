@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 
-export default function Confirmacao() {
+export default function Confirmacao(props) {
+    console.log(props);
     return (
         <div className="Confirmacao">
             <section>
