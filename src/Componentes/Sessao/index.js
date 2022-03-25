@@ -5,21 +5,34 @@ import axios from 'axios';
 import "./style.css";
 
 export default function Sessao() {
-    const { idSessao } = useParams();
     const [sessoes, setSessoes] = useState([]);
+    const [selecionar, setSelecionar] = useState({ selecionados: [], css: "assento" });
+    const { idSessao } = useParams();
 
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
 
         requisicao.then(resposta => setSessoes(resposta.data))
-        .catch(erro => console.log(erro.response));
+            .catch(erro => console.log(erro.response));
     }, []);
 
+    function select(sessao) {
+        const { name, isAvailable } = sessao;
+        const { selecionados } = selecionar;
+
+        isAvailable ? setSelecionar({ ...selecionar, selecionados: [...selecionados, name], css: "assento selecionado" }) : alert("Esse assento não está disponível");
+    }
+
+    console.log(selecionar.selecionados);
+
+    // useEffect(() => {
+    //     const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many")
+    // }, []);
+
     if (sessoes.length === undefined) {
-        console.log(sessoes);
-        const {seats, movie, name, day} = sessoes;
-        const {title, posterURL} = movie;
-        const {weekday} = day;
+        const { seats, movie, name, day } = sessoes;
+        const { title, posterURL } = movie;
+        const { weekday } = day;
 
         return (
             <div className="Sessao">
@@ -28,13 +41,14 @@ export default function Sessao() {
                 </section>
                 <main>
                     <div className="assentos">
-                    {seats.map(sessao => {
-                        const {id, name, isAvailable} = sessao;
-                        const css = isAvailable ? "assento" : "assento indisponivel";
-                        return (
-                            <div key={id} className={css}>{name}</div>
-                        );     
-                    })}
+                        {seats.map(sessao => {
+                            const { id, name, isAvailable } = sessao;
+                            let  css = isAvailable ? "assento" : "assento indisponivel";
+
+                            return (
+                                <div key={id} className={css} onClick={() => select(sessao)}>{name}</div>
+                            );
+                        })}
                     </div>
                     <div className="assentos legendas">
                         <div className="legenda">
@@ -50,7 +64,7 @@ export default function Sessao() {
                             <p>Indisponível</p>
                         </div>
                     </div>
-                </main> 
+                </main>
                 <aside>
                     <div className="informacoes">
                         <label>Nome do comprador:</label>
