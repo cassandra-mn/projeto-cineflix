@@ -79,7 +79,7 @@ export default function Sessao({ atualizar }) {
 
                 <footer>
                     <div className="borda">
-                        <img src={posterURL} />
+                        <img src={posterURL} alt={title} />
                     </div>
                     <div>
                         <p>{title}</p>

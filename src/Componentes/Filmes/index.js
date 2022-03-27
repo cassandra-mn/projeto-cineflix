@@ -22,11 +22,11 @@ export default function Filmes() {
             </section>
             <main className="filmes">
                 {filmes.map(filme => {
-                    const {id, posterURL} = filme;
+                    const {id, overview, posterURL} = filme;
                     return (
-                        <Link to={`/filme/${id}`}>
+                        <Link key={id} to={`/filme/${id}`}>
                             <div key={id} className="borda">
-                                <img src={posterURL} />
+                                <img src={posterURL} alt={overview}/>
                             </div>
                         </Link>
                     );

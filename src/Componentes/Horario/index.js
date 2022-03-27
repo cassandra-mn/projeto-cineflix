@@ -47,7 +47,7 @@ export default function Horario() {
                 </main>
                 <footer>
                     <div className="borda">
-                        <img src={posterURL} />
+                        <img src={posterURL} alt={title} />
                     </div>
                     <p>{title}</p>
                 </footer>
