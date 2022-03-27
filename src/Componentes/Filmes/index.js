@@ -14,7 +14,6 @@ export default function Filmes() {
             setFilmes(resposta.data);
         });
     }, []);
-    console.log(filmes);
 
     return (
         <div className="Filmes">

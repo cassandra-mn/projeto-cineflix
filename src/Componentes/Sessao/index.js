@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./style.css";
 
-export default function Sessao() {
+export default function Sessao({ atualizar }) {
     const [sessoes, setSessoes] = useState([]);
     const [assentos, setAssentos] = useState([]);
     const [nome, setNome] = useState("");
@@ -18,8 +18,11 @@ export default function Sessao() {
             .catch(erro => console.log(erro.response));
     }, []);
 
-    function enviarDados(e) {
+    function enviarDados(e, title, name, date) {
         e.preventDefault();
+
+        atualizar({ids: assentos, name: nome, cpf: cpf, title: title, hora: name, data: date});
+
         const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {
             ids: assentos,
             name: nome,
@@ -27,21 +30,14 @@ export default function Sessao() {
         });
 
         requisicao.then(resposta => {
-            navigate("/sucesso", {
-                ids: assentos,
-                name: nome,
-                cpf: cpf
-            });
-            console.log(assentos);
-            console.log(nome);
-            console.log(cpf);
+            navigate("/sucesso");
         }).catch(erro => console.log(erro.response));
     }
 
     if (sessoes.length === undefined) {
         const { seats, movie, name, day } = sessoes;
         const { title, posterURL } = movie;
-        const { weekday } = day;
+        const { weekday, date } = day;
 
         return (
             <div className="Sessao">
@@ -50,8 +46,8 @@ export default function Sessao() {
                 </section>
                 <main>
                     <div className="assentos">
-                        {seats.map(sessao => 
-                            <Seat seat={sessao} assentos={assentos} setAssentos={setAssentos}/>
+                        {seats.map(sessao =>
+                            <Seat seat={sessao} assentos={assentos} setAssentos={setAssentos} />
                         )}
                     </div>
                     <div className="assentos legendas">
@@ -69,7 +65,7 @@ export default function Sessao() {
                         </div>
                     </div>
                 </main>
-                <form onSubmit={enviarDados}>
+                <form onSubmit={(e) => enviarDados(e, title, name, date)}>
                     <div className="informacoes">
                         <label>Nome do comprador:</label>
                         <input type="text" required placeholder="Digite seu nome..." value={nome} onChange={(event) => setNome(event.target.value)} />
@@ -98,12 +94,12 @@ export default function Sessao() {
     }
 }
 
-function Seat({seat, assentos, setAssentos}) {
-    const {id, name, isAvailable} = seat;
+function Seat({ seat, assentos, setAssentos }) {
+    const { id, name, isAvailable } = seat;
     const [selecionado, setSelecionado] = useState(false);
-    
+
     return isAvailable ? (
-        <div key={id} className={selecionado ? "assento selecionado" : "assento"} 
+        <div key={id} className={selecionado ? "assento selecionado" : "assento"}
             onClick={() => {
                 setSelecionado(!selecionado);
                 selecionado ? setAssentos(assentos.filter(assento => assento !== name)) : setAssentos([...assentos, name]);
@@ -111,7 +107,7 @@ function Seat({seat, assentos, setAssentos}) {
             {name}
         </div>
     ) : (
-        <div key={id} className="assento indisponivel" 
+        <div key={id} className="assento indisponivel"
             onClick={() => alert("Esse assento não está disponível")}>
             {name}
         </div>
