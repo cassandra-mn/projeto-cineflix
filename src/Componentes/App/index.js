@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
+import Voltar from "../Voltar";
 import Header from "./../Header";
 import Filmes from "./../Filmes";
 import Horario from "./../Horario";
@@ -12,6 +13,7 @@ export default function App() {
     return (
         <>
         <BrowserRouter>
+            <Voltar />
             <Header />
             <Routes>
                 <Route path="/" element={<Filmes />} />

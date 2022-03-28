@@ -1,0 +1,14 @@
+.Voltar {
+    left: 30px;
+    top: 20px;
+    z-index: 1;
+    font-size: 20px;
+    border: none;
+    position: fixed;
+    color: #E8833A;
+    background-color: #C3CFD9;
+}
+
+.Voltar:hover {
+    cursor: pointer;
+}
