@@ -4,8 +4,9 @@ import axios from 'axios';
 
 import "./style.css";
 
-export default function Filmes() {
+export default function Filmes({mudarEstado}) {
     const [filmes, setFilmes] = useState([]);
+    mudarEstado(false);
 
     useEffect(() => {
         const requisicao = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");

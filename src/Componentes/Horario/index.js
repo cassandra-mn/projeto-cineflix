@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import "./style.css";
 
-export default function Horario() {
+export default function Horario({mudarEstado}) {
     const { idFilme } = useParams();
     const [dias, setDias] = useState([]);
+    mudarEstado(true);
 
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`);

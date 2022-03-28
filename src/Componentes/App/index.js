@@ -9,15 +9,16 @@ import Confirmacao from "./../Confirmacao";
 
 export default function App() {
     const [dados, setDados] = useState({});
+    const [visivel, setVisivel] = useState(false);
 
     return (
         <>
         <BrowserRouter>
-            <Voltar />
+            <Voltar visivel={visivel}/>
             <Header />
             <Routes>
-                <Route path="/" element={<Filmes />} />
-                <Route path="/filme/:idFilme" element={<Horario />} />
+                <Route path="/" element={<Filmes mudarEstado={estado => setVisivel(estado)}/>} />
+                <Route path="/filme/:idFilme" element={<Horario mudarEstado={estado => setVisivel(estado)} />} />
                 <Route path="/sessao/:idSessao" element={<Sessao atualizar={dados => setDados({dados})} />} />
                 <Route path="/sucesso" element={<Confirmacao dados={dados} />} />
             </Routes>
