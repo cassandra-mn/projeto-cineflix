@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Cpf } from './../Mask';
 import axios from 'axios';
 import "./style.css";
 
@@ -10,6 +11,8 @@ export default function Sessao({ atualizar }) {
     const [cpf, setCpf] = useState("");
     const { idSessao } = useParams();
     const navigate = useNavigate();
+    const teste = Cpf(cpf);
+    console.log(teste);
 
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
@@ -20,13 +23,13 @@ export default function Sessao({ atualizar }) {
 
     function enviarDados(e, title, name, date) {
         e.preventDefault();
-
-        atualizar({ids: assentos, name: nome, cpf: cpf, title: title, hora: name, data: date});
+        
+        atualizar({ids: assentos, name: nome, cpf: Cpf(cpf), title: title, hora: name, data: date});
 
         const requisicao = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", {
             ids: assentos,
             name: nome,
-            cpf: cpf
+            cpf: Cpf(cpf)
         });
 
         requisicao.then(resposta => {
@@ -72,7 +75,7 @@ export default function Sessao({ atualizar }) {
                     </div>
                     <div className="informacoes">
                         <label>CPF do comprador:</label>
-                        <input type="number" required placeholder="Digite seu CPF..." value={cpf} onChange={(event) => setCpf(event.target.value)} />
+                        <input type="text" required placeholder="Digite seu CPF..." value={Cpf(cpf)} onChange={(event) => setCpf(event.target.value)} />
                     </div>
                     <button type="submit">Reservar assento(s)</button>
                 </form>
