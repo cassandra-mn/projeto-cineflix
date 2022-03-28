@@ -12,7 +12,7 @@ export default function App() {
     const [visivel, setVisivel] = useState(false);
 
     return (
-        <>
+        <div className="container app">
         <BrowserRouter>
             <Voltar visivel={visivel}/>
             <Header />
@@ -23,6 +23,6 @@ export default function App() {
                 <Route path="/sucesso" element={<Confirmacao dados={dados} />} />
             </Routes>
         </BrowserRouter>
-        </>
+        </div>
     )
 }

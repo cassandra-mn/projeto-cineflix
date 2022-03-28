@@ -1,6 +1,6 @@
 header {
     position: sticky;
-    width: 375px;
+    min-width: 375px;
     height: 67px;
     left: 0px;
     top: 0px;
@@ -8,7 +8,7 @@ header {
 }
 
 header p {
-    width: 375px;
+    min-width: 375px;
     height: 67px;
     font-size: 34px;
     display: flex;
