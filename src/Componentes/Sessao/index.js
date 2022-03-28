@@ -11,8 +11,6 @@ export default function Sessao({ atualizar }) {
     const [cpf, setCpf] = useState("");
     const { idSessao } = useParams();
     const navigate = useNavigate();
-    const teste = Cpf(cpf);
-    console.log(teste);
 
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
