@@ -5,7 +5,7 @@
 }
 
 body {
-    min-width: 374px;
+    width: 374px;
     display: flex;
     justify-content: center;
 }
@@ -28,7 +28,7 @@ section p {
 
 footer {
     position: fixed;
-    min-width: 375px;
+    width: 375px;
     height: 117px;
     left: 0px;
     bottom: 0px;
