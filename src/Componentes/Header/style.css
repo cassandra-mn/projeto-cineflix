@@ -1,14 +1,14 @@
 header {
-    position: sticky;
-    width: 375px;
+    width: 100%;
     height: 67px;
     left: 0px;
     top: 0px;
+    position: sticky;
     background: #C3CFD9;
 }
 
 header p {
-    width: 375px;
+    width: 100%;
     height: 67px;
     font-size: 34px;
     display: flex;
